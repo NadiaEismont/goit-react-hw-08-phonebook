@@ -1,26 +1,32 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import Section from './Section/Section';
-
-import { NotificationContainer } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+import { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+// import { Layout } from './Layout';
+import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from '../hooks/useAuth';
 import { Layout } from './Layout/Layout';
 
+const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
-const TasksPage = lazy(() => import('../pages/Contacts'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
         <Route
           path="/register"
           element={
@@ -37,26 +43,14 @@ export function App() {
           }
         />
         <Route
+          index
           path="/contacts"
           element={
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
   );
 }
-
-//   return (
-//     <Layout>
-//       <Section title="Phonebook">
-//         <ContactForm />
-//       </Section>
-//       <Section title="Contacts">
-//         <Filter />
-//         <ContactList />
-//       </Section>
-//       <NotificationContainer />
-//     </Layout>
-//   );
-// }
