@@ -21,7 +21,3 @@ export const Layout = () => {
     </div>
   );
 };
-
-// export const Layout = ({ children }) => {
-//   return <Box>{children}</Box>;
-// };

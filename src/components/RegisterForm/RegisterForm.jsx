@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
+
 import { register } from 'redux/auth/operations';
+
 import { FormStyled, LabelRegister } from './RegisterForm.styled';
 import { Input } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
