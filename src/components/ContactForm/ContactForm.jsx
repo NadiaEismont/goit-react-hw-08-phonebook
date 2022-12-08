@@ -2,12 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
 import { NotificationManager } from 'react-notifications';
 import { getContacts } from 'redux/selectors';
-import {
-  TagForm,
-  TagInput,
-  ButtonSubmit,
-  LabelForm,
-} from './ContactForm.styled';
+import { TagForm, TagInput, LabelForm } from './ContactForm.styled';
 import { Input } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
 
