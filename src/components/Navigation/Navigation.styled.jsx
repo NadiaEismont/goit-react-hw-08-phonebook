@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import { NavLink } from 'react-router-dom';
 
 export const LinkNavStyled = styled(NavLink)`
