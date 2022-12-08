@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { NotificationManager } from 'react-notifications';
 import { register, logIn, logOut, refreshUser } from './operations';
 
 const initialState = {
@@ -22,6 +23,10 @@ const authSlice = createSlice({
             state.token = action.payload.token;
             state.isLoggedIn = true;
         },
+        [logIn.rejected](state, action) {
+            NotificationManager.warning(`Log in ${action.error.message}`);
+        },
+
         [logOut.fulfilled](state) {
             state.user = { name: null, email: null };
             state.token = null;

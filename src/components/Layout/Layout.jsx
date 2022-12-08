@@ -2,6 +2,8 @@ import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AppBar } from '../AppBar/AppBar';
 import { Suspense } from 'react';
+import { NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 import { Layout as Box } from './Layout.styled';
 
@@ -14,6 +16,7 @@ export const Layout = () => {
           <Outlet />
         </Box>
       </Suspense>
+      <NotificationContainer />
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );

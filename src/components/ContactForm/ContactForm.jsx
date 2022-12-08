@@ -8,6 +8,8 @@ import {
   ButtonSubmit,
   LabelForm,
 } from './ContactForm.styled';
+import { Input } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -30,9 +32,9 @@ export default function ContactForm() {
   return (
     <TagForm onSubmit={handleSubmit}>
       <LabelForm htmlFor="name">Name</LabelForm>
-      <TagInput type="text" name="name" placeholder="Your name" />
+      <Input type="text" name="name" placeholder="Your name" />
       <LabelForm htmlFor="number">Number</LabelForm>
-      <TagInput
+      <Input
         type="tel"
         name="number"
         placeholder="Your phone number"
@@ -40,7 +42,7 @@ export default function ContactForm() {
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
       />
-      <ButtonSubmit type="submit">Add contact</ButtonSubmit>
+      <Button type="submit">Add contact</Button>
     </TagForm>
   );
 }

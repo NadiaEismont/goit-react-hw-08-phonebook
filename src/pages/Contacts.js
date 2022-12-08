@@ -2,8 +2,7 @@ import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import Section from 'components/Section/Section';
-import { NotificationContainer } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+
 
 
 export default function ContactsPage() {
@@ -16,7 +15,7 @@ export default function ContactsPage() {
                 <Filter />
                 <ContactList />
             </Section>
-            <NotificationContainer />
+
         </>
     );
 }
